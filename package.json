@@ -1,0 +1,17 @@
+{
+  "name": "sentinel-network",
+  "version": "2.0.0",
+  "description": "Federal investigation/surveillance Discord bot — Sentinel Network v2",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js",
+    "dashboard": "node dashboard/server.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

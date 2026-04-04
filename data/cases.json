@@ -1,0 +1,16 @@
+{
+  "CASE-0001": {
+    "caseId": "CASE-0001",
+    "title": "test",
+    "status": "OPEN",
+    "creatorId": "1449460736802689034",
+    "assignedAgents": [
+      "1449460736802689034"
+    ],
+    "evidence": [],
+    "notes": [],
+    "createdAt": "2026-04-03T19:38:39.253Z",
+    "updatedAt": "2026-04-03T19:38:53.500Z",
+    "closedAt": null
+  }
+}
