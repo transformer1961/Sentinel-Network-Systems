@@ -1,0 +1,37 @@
+Good, files are still here. Let me go through the whole codebase properly — auth/permission gates, injection risk, secrets handling, error handling, and the newer REST API surface since that's the highest-risk addition (it can trigger real Discord actions).Went through every file — cogs, lib, index/deploy scripts, and ran a dependency audit. Here's what I found, grouped by severity.
+
+## 🔴 Critical
+
+**1. No `.gitignore` in the project.** Nothing stops `.env` (bot tokens, `API_KEY`, `MONGODB_URI`, `WEBHOOK_SECRET`) from being committed to git — this is the exact failure the Sentinel Bot audit you uploaded flagged as its #1 critical issue. Fixing now.
+
+**2. Vulnerable dependency chain.** `npm audit` found 1 critical + 2 high severity issues, all from `bcrypt@5.x` pulling in a vulnerable version of `tar` (path traversal / arbitrary file write via `@mapbox/node-pre-gyp`). Fix available: `bcrypt@6.0.0`.
+
+## 🟠 High
+
+**3. `/api/kepler` and `/api/lockdown` (`lockdown-all`) have no confirmation step.** The Discord slash commands require typing `CONFIRM` before locking the whole server — the REST API versions don't. A leaked `API_KEY` alone triggers a full server lockdown with a single HTTP call, no second factor. Inconsistent safety rail between the two entry points to the same action.
+
+**4. `/account-reset` can reset any SNS-web account's password — including admin accounts — from Discord, with no extra confirmation.** Any Discord admin now has an implicit path to website account takeover. Worth deciding if that's intentional or needs a narrower permission gate.
+
+**5. Race condition in `getBotState()`** (`lib/db.js`): `findOne` then `create` if missing — two simultaneous first-time calls could both attempt `create()` and throw an uncaught duplicate-key error, since `key` is unique. Should be an atomic upsert.
+
+## 🟡 Medium
+
+**6. API error responses leak internals.** Every `/api/*` route does `res.status(500).json({ error: err.message })` — raw error messages (which can include Mongo internals, stack fragments) go straight to the caller.
+
+**7. Secret comparisons aren't timing-safe.** `WEBHOOK_SECRET`/`API_KEY` checks use `===`, which is vulnerable in theory to timing attacks. Low real-world risk here but cheap to fix.
+
+**8. No audit trail for API-triggered actions.** Webhook events get logged to `EventLog`; successful `/api/maintenance`, `/api/lockdown`, `/api/kepler` calls don't. If something gets locked down via the website, there's no persisted record of it beyond Discord's own audit log.
+
+**9. Temp password generator can silently produce fewer than 12 characters** (`accounts.js`) — stripping `+/=` from the base64 output before slicing can leave you with less entropy than intended in the worst case.
+
+**10. Kepler deactivate always clears maintenance mode**, even if maintenance was separately enabled for an unrelated reason (e.g., a real deploy) during the incident. The two states share one field with no way to tell them apart.
+
+## 🟢 Low
+
+**11.** `guild.channels.cache` (used in `lockdown-all` and Kepler) relies on cache being complete — `guild.channels.fetch()` would be more reliable on large/recently-joined guilds.
+**12.** No `engines` field in `package.json` — the bot uses native `fetch()` (Node 18+) and newer discord.js APIs but nothing enforces a minimum Node version if someone runs `npm install` on an old Node.
+**13.** No rate limiting on webhook/API endpoints — not urgent behind a secret, but worth adding before this is fully internet-facing.
+
+---
+
+Fixing the critical + a few cheap high-value items now:Zero vulnerabilities now. Fixing the race condition and timing-safe comparisons:Now swap the raw `err.message` leaks in every API route for the sanitized helper, and add a `confirm` requirement + audit logging to the destructive API routes:Now confirmation parity + audit logging on the two destructive API routes:

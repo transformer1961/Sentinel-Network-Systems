@@ -1,0 +1,30 @@
+{
+  "trustedServerStaffRole": "SN-Trusted",
+  "highStaffRole": "──── High Staff ────",
+
+  "embedColor":   "#0a0f1e",
+  "accentColor":  "#00ff88",
+  "dangerColor":  "#ff2244",
+  "warningColor": "#ffaa00",
+  "criticalColor":"#cc0000",
+
+  "version": "3.0.0",
+  "botName": "SENTINEL NETWORK",
+
+  "dashboard": true,
+  "dashboardPort": 3000,
+
+  "roleNames": {
+    "1":   "Recruit",
+    "1.5": "Trainee Agent",
+    "2":   "Agent",
+    "2.5": "Investigator",
+    "3":   "Senior Investigator",
+    "3.5": "Supervisor",
+    "4":   "Lead Investigator",
+    "4.5": "Deputy Director",
+    "5":   "Director",
+    "5.5": "Executive Director",
+    "6":   "System Owner"
+  }
+}

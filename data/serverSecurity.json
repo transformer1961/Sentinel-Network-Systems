@@ -1,0 +1,68 @@
+{
+  "1458586026699132971": {
+    "serverId": "1458586026699132971",
+    "lockdown": {
+      "active": false,
+      "level": "MEDIUM",
+      "type": "HQ",
+      "reason": "fsdsd",
+      "triggeredBy": "raptor_01556",
+      "triggeredById": "1449460736802689034",
+      "triggeredAt": "2026-09-01T05:17:54.663Z",
+      "clearedAt": "2026-09-01T05:20:06.937Z",
+      "clearedBy": "raptor_01556",
+      "clearedReason": "No reason provided"
+    },
+    "tls": {
+      "local": {
+        "level": "GREEN",
+        "tcl": null,
+        "reason": "rew",
+        "setBy": "raptor_01556",
+        "setById": "1449460736802689034",
+        "setAt": "2026-06-23T15:15:30.786Z"
+      },
+      "hq": {
+        "level": "GREEN",
+        "tcl": null,
+        "reason": null,
+        "setBy": null,
+        "setById": null,
+        "setAt": null
+      }
+    }
+  },
+  "1453121844281606258": {
+    "serverId": "1453121844281606258",
+    "lockdown": {
+      "active": false,
+      "level": "TOTAL",
+      "type": "HQ",
+      "reason": "treret",
+      "triggeredBy": "raptor_01556",
+      "triggeredById": "1449460736802689034",
+      "triggeredAt": "2026-09-01T05:18:56.595Z",
+      "clearedAt": "2026-09-01T05:19:40.301Z",
+      "clearedBy": "raptor_01556",
+      "clearedReason": "No reason provided"
+    },
+    "tls": {
+      "local": {
+        "level": "GREEN",
+        "tcl": null,
+        "reason": null,
+        "setBy": null,
+        "setById": null,
+        "setAt": null
+      },
+      "hq": {
+        "level": "GREEN",
+        "tcl": null,
+        "reason": null,
+        "setBy": null,
+        "setById": null,
+        "setAt": null
+      }
+    }
+  }
+}

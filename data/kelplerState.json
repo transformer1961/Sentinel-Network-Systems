@@ -1,0 +1,34 @@
+{
+  "status": {
+    "active": true,
+    "phase": "IV-Lockdown",
+    "activatedAt": "2026-06-23T15:55:21.689Z",
+    "activatedBy": "raptor_01556",
+    "activatedById": "1449460736802689034",
+    "activationReason": "y",
+    "deactivatedAt": null,
+    "deactivatedBy": null,
+    "deactivationReason": null,
+    "authorizedBy": null,
+    "authorizedById": null,
+    "snapshots": [
+      {
+        "id": "SNAPSHOT-1782230037351",
+        "createdAt": "2026-06-23T15:53:57.351Z",
+        "createdBy": "tester",
+        "createdById": "123",
+        "label": "unit-test",
+        "phase": "II-Isolation",
+        "timestamp": "2026-06-23T15:53:57.351Z"
+      }
+    ],
+    "incidents": [],
+    "restrictions": {
+      "dashboardDisabled": true,
+      "hqAccessRestricted": true,
+      "commandsFrozen": true,
+      "configLocked": true,
+      "synchronizationSuspended": false
+    }
+  }
+}

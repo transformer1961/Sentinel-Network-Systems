@@ -1,0 +1,27 @@
+# Railway Deployment Configuration
+# This file configures how Sentinel Bot runs on Railway
+# Railway automatically detects and uses this configuration
+
+[build]
+builder = "dockerfile"
+
+[deploy]
+# 30-second timeout for Railway to pull the image
+startCommand = "node index.js"
+numReplicas = 1
+restartPolicyMaxRetries = 3
+healthchecks = { enabled = true, cpu = true, memory = true }
+
+# Environment variables (add secrets via Railway dashboard)
+[env]
+NODE_ENV = "production"
+LOG_LEVEL = "info"
+
+# Volumes for data persistence across restarts
+[[volumes]]
+mountPath = "/app/data"
+name = "sentinel-data"
+
+# Port configuration (Railway assigns PORT env var)
+[port]
+port = 3000

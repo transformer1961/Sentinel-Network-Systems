@@ -1,0 +1,19 @@
+{
+  "name": "sentinel-network",
+  "version": "3.1.0",
+  "description": "Sentinel Network — Multi-server federal investigation Discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start":     "node index.js",
+    "dev":       "node --watch index.js",
+    "init":      "node scripts/initDB.js",
+    "reset":     "node scripts/initDB.js --reset",
+    "backup":    "node scripts/backupData.js",
+    "validate":  "node scripts/validate.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.9.0"
+  },
+  "engines": { "node": ">=18.0.0" }
+}
