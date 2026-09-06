@@ -1,4 +1,5 @@
-// SENTINEL NETWORK - Main Entry Point v3.2
+// SNS WATCHTOWER - Main Entry Point v3.2
+// (formerly "Sentinel Network" — the HQ Discord server keeps that name)
 // Clean modular architecture:
 //   Commands: /commands/[group]/index.js
 //   Events:   /events/[name].js
@@ -207,7 +208,7 @@ process.on('uncaughtException', (err) => {
 // ─── Boot Sequence ────────────────────────────────────────────────────────────
 
 (async () => {
-  logger.info('boot', '🚀 Starting Sentinel Network...');
+  logger.info('boot', '🚀 Starting SNS Watchtower...');
   logger.info('boot', `Environment: ${process.env.NODE_ENV || 'development'}`);
 
   // Validate environment and config

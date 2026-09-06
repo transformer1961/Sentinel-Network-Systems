@@ -219,7 +219,7 @@ function buildLoginPage() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sentinel Network Dashboard Login</title>
+<title>SNS Watchtower Dashboard Login</title>
 <style>
   body{margin:0;font-family:Inter,system-ui,sans-serif;background:#020714;color:#e3f5ff;display:flex;align-items:center;justify-content:center;height:100vh;background-image:radial-gradient(circle at top,rgba(0,255,136,.12),transparent 35%),radial-gradient(circle at 20% 20%,rgba(0,170,255,.18),transparent 25%);}
   .card{width:100%;max-width:420px;padding:32px;background:rgba(4,11,27,.94);border:1px solid rgba(0,255,136,.16);border-radius:20px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
@@ -235,7 +235,7 @@ function buildLoginPage() {
 </head>
 <body>
 <div class="card">
-  <h1>SENTINEL NETWORK</h1>
+  <h1>SNS WATCHTOWER</h1>
   <p>Secure dashboard access — authenticate with the dashboard password.</p>
   <input id="password" type="password" placeholder="Dashboard password" autocomplete="current-password">
   <button onclick="login()">Authenticate</button>
@@ -269,7 +269,7 @@ function buildDashboardPage() {
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Sentinel Network Dashboard</title>
+<title>SNS Watchtower Dashboard</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js" integrity="sha512-wI9oWBN2d2cdTZi3nuS576EdmiYd6gFCwN5v1tRFO+a9aSv6c6RdCSQbm2EVVJyeNgI8H6pAVls/gcct5XvgRA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <style>
   :root { --bg:#020714; --surface:#08172f; --surface2:#0f213f; --border:#1c3b61; --text:#e8f6ff; --muted:#7aa5c6; --good:#00ff88; --warn:#ffb76b; --danger:#ff5a5a; }
@@ -326,7 +326,7 @@ function buildDashboardPage() {
 <div class="layout">
   <nav>
     <div>
-      <div class="logo">SENTINEL NETWORK</div>
+      <div class="logo">SNS WATCHTOWER</div>
       <div class="nav-desc">Advanced secure dashboard with live analytics and operational controls.</div>
     </div>
     <div class="nav-item active" data-section="overview" onclick="navClick(event)"><span>📊</span><span>Overview</span></div>

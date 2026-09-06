@@ -9,7 +9,7 @@
   "criticalColor":"#cc0000",
 
   "version": "3.0.0",
-  "botName": "SENTINEL NETWORK",
+  "botName": "SNS WATCHTOWER",
 
   "dashboard": true,
   "dashboardPort": 3000,

@@ -17,7 +17,7 @@ module.exports = {
 
     console.log('');
     console.log('╔══════════════════════════════════════════════╗');
-    console.log('║     SENTINEL NETWORK v3.0 — ONLINE          ║');
+    console.log('║        SNS WATCHTOWER v3.0 — ONLINE         ║');
     console.log(`║  Bot     : ${client.user.tag.padEnd(33)}║`);
     console.log(`║  Servers : ${String(guilds).padEnd(33)}║`);
     console.log(`║  Members : ${String(users).padEnd(33)}║`);

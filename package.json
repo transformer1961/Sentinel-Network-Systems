@@ -1,7 +1,7 @@
 {
-  "name": "sentinel-network",
+  "name": "sns-watchtower",
   "version": "3.1.0",
-  "description": "Sentinel Network — Multi-server federal investigation Discord bot",
+  "description": "SNS Watchtower — Multi-server security & investigation Discord bot (part of Sentinel Network Systems)",
   "main": "index.js",
   "scripts": {
     "start":     "node index.js",

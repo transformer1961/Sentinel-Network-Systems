@@ -31,6 +31,7 @@ override('HIGH_STAFF_ROLE', 'highStaffRole');
 override('DASHBOARD', 'dashboard', parseBoolean);
 override('DASHBOARD_PORT', 'dashboardPort', (value) => Number(value) || config.dashboardPort);
 override('DASHBOARD_PASSWORD', 'dashboardPassword');
+override('BOT_NAME', 'botName');
 override('BACKUP_ENABLED', 'backupEnabled', parseBoolean);
 override('BACKUP_DIRECTORY', 'backupDirectory');
 override('BACKUP_RETENTION', 'backupRetention', (value) => Number(value) || config.backupRetention);
