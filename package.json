@@ -4,11 +4,13 @@
   "description": "SNS Watchtower — Multi-server security & investigation Discord bot (part of Sentinel Network Systems)",
   "main": "index.js",
   "scripts": {
+    "test":       "node --test tests/*.test.js",
     "start":     "node index.js",
     "dev":       "node --watch index.js",
     "init":      "node scripts/initDB.js",
     "reset":     "node scripts/initDB.js --reset",
     "backup":    "node scripts/backupData.js",
+    "restore":   "node scripts/restoreData.js",
     "validate":  "node scripts/validate.js"
   },
   "dependencies": {

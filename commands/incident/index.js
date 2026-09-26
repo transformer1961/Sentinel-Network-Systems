@@ -114,7 +114,7 @@ module.exports = {
 
       if (subcommand === 'status') {
         const incidentId = interaction.options.getString('incidentid');
-        const response = await fetch(`${apiConfig.url}/api/incidents?status=all`, {
+        const response = await fetch(`${apiConfig.url}/api/incidents?status=all&incidentId=${encodeURIComponent(incidentId)}`, {
           method: 'GET',
           headers: {
             'Content-Type': 'application/json',

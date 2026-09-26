@@ -20,6 +20,8 @@ async function publishBlacklistUpdate(update) {
     source: 'sentinel-bot',
     ...update
   });
+  const requestId = crypto.randomUUID();
+  const timestamp = String(Date.now());
 
   try {
     const response = await fetch(config.url, {
@@ -28,7 +30,9 @@ async function publishBlacklistUpdate(update) {
         'Content-Type': 'application/json',
         'x-sns-bot-id': config.botId,
         'x-sns-bot-token': config.botToken,
-        'x-sns-signature': crypto.createHmac('sha256', config.secret).update(payload).digest('hex')
+        'x-sns-request-id': requestId,
+        'x-sns-timestamp': timestamp,
+        'x-sns-signature': crypto.createHmac('sha256', config.secret).update(`${timestamp}.${requestId}.${payload}`).digest('hex')
       },
       body: payload,
       signal: AbortSignal.timeout(10000)

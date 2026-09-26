@@ -5,6 +5,7 @@ const {
   normalizeIncidentStatus,
   buildIncidentPayload,
   getIncidentApiConfig,
+  createSignedRequestPayload,
 } = require('../modules/incidentClient');
 
 test('incident status values normalize to the SNS lifecycle', () => {
@@ -54,4 +55,12 @@ test('incident API config is only considered configured when all required values
   if (previousBotId === undefined) delete process.env.SENTINEL_SNS_BOT_ID; else process.env.SENTINEL_SNS_BOT_ID = previousBotId;
   if (previousToken === undefined) delete process.env.SENTINEL_SNS_BOT_TOKEN; else process.env.SENTINEL_SNS_BOT_TOKEN = previousToken;
   if (previousSecret === undefined) delete process.env.BOT_WEBHOOK_SECRET; else process.env.BOT_WEBHOOK_SECRET = previousSecret;
+});
+
+test('signed incident requests include replay-resistant metadata', () => {
+  const request = createSignedRequestPayload({ incidentId: 'INC-1' }, 'test-secret');
+  assert.match(request.headers['x-sns-request-id'], /^[0-9a-f-]{36}$/);
+  assert.match(request.headers['x-sns-timestamp'], /^\d+$/);
+  assert.equal(request.body, '{"incidentId":"INC-1"}');
+  assert.match(request.headers['x-sns-signature'], /^[0-9a-f]{64}$/);
 });

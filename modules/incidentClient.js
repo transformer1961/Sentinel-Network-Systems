@@ -43,13 +43,18 @@ function getIncidentApiConfig() {
 
 function createSignedRequestPayload(body, secret) {
   const raw = JSON.stringify(body);
+  const requestId = crypto.randomUUID();
+  const timestamp = String(Date.now());
+  const signedMessage = `${timestamp}.${requestId}.${raw}`;
   return {
     raw,
     headers: {
       'Content-Type': 'application/json',
       'x-sns-bot-id': process.env.SENTINEL_SNS_BOT_ID,
       'x-sns-bot-token': process.env.SENTINEL_SNS_BOT_TOKEN,
-      'x-sns-signature': crypto.createHmac('sha256', secret).update(raw).digest('hex'),
+      'x-sns-request-id': requestId,
+      'x-sns-timestamp': timestamp,
+      'x-sns-signature': crypto.createHmac('sha256', secret).update(signedMessage).digest('hex'),
     },
     body: raw,
   };
